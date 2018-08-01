@@ -2,57 +2,50 @@ package com.fil.SmarTuck.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "Item")
 public class Item 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int iNo;
 	
-	@ManyToOne
-	@JoinColumn(name="shopId")
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn(name = "shopId")
 	private Shop shop; 
 	
 	@Column
 	private String category;
+	
 	@Column
 	private String itemName;
+	
 	@Column
 	private int price;
+	
 	@Column
 	private int quantity;
+	
 	@Column
-	private int preperationTime;
+	private int preparationTime;
+	
 	@Column
 	private double rating;
+	
 	@Column
-	private int itemrating_count;
+	private int counter;
 
 
 	public Item() {
 		super();
-	}
-
-
-	public Item(int iNo, Shop shop, String category, String itemName, int price, int quantity, int preperationTime,
-			double rating, int itemrating_count) 
-	{
-		super();
-		this.iNo = iNo;
-		this.shop = shop;
-		this.category = category;
-		this.itemName = itemName;
-		this.price = price;
-		this.quantity = quantity;
-		this.preperationTime = preperationTime;
-		this.rating = rating;
-		this.itemrating_count = itemrating_count;
 	}
 
 
@@ -116,13 +109,13 @@ public class Item
 	}
 
 
-	public int getPreperationTime() {
-		return preperationTime;
+	public int getPreparationTime() {
+		return preparationTime;
 	}
 
 
-	public void setPreperationTime(int preperationTime) {
-		this.preperationTime = preperationTime;
+	public void setPreparationTime(int preparationTime) {
+		this.preparationTime = preparationTime;
 	}
 
 
@@ -136,22 +129,25 @@ public class Item
 	}
 
 
-	public int getItemrating_count() {
-		return itemrating_count;
+	public int getCounter() {
+		return counter;
 	}
 
 
-	public void setItemrating_count(int itemrating_count) {
-		this.itemrating_count = itemrating_count;
+	public void setCounter(int counter) {
+		this.counter = counter;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Item [iNo=" + iNo + ", shop=" + shop + ", category=" + category + ", itemName=" + itemName + ", price="
-				+ price + ", quantity=" + quantity + ", preperationTime=" + preperationTime + ", rating=" + rating
-				+ ", itemrating_count=" + itemrating_count + "]";
+				+ price + ", quantity=" + quantity + ", preparationTime=" + preparationTime + ", rating=" + rating
+				+ ", counter=" + counter + "]";
 	}
+
+
+	
 
 
 
